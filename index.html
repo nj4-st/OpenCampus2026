@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プチオープンキャンパス2026
+    </title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>新規店舗登録</h1>
+        <div class="second-container">
+            <span>店舗名</span>
+            <input type="text" id="store-name" name="store-name" autocomplete="organization">
+        </div>
+
+        
+        <div class="second-container">
+            <span>ジャンル</span>
+            <div id="jenre-item" class="genre-list">
+                <label class="checkbox-option">
+                    <input type="checkbox" name="jenre-item" value="1">
+                    <span>和食</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="jenre-item" value="2">
+                    <span>洋食</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="jenre-item" value="3">
+                    <span>中華</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="jenre-item" value="4">
+                    <span>カフェ</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="jenre-item" value="5">
+                    <span>ラーメン</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="jenre-item" value="6">
+                    <span>イタリアン</span>
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="jenre-item" value="7">
+                    <span>その他</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="second-container">
+            <span>価格帯</span>
+            <div>
+                <p>
+                    <span id="price-min-label">下限なし</span>
+                    <span>〜</span>
+                    <span id="price-max-label">上限なし</span>
+                </p>
+                <div class="range-slider__wrapper">
+                    <div class="range-slider__track">
+                        <div class="range-slider__fill" id="price-range-fill"></div>
+                    </div>
+                    <input
+                        type="range"
+                        id="price-min"
+                        class="range-slider__input range-slider__input--min"
+                        min="0"
+                        max="6"
+                        step="1"
+                        value="0"
+                        aria-label="価格の下限"
+                    >
+                    <input
+                        type="range"
+                        id="price-max"
+                        class="range-slider__input range-slider__input--max"
+                        min="0"
+                        max="6"
+                        step="1"
+                        value="6"
+                        aria-label="価格の上限"
+                    >
+                </div>
+            </div>
+        </div>
+    
+
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
