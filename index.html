@@ -4,92 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>プチオープンキャンパス2026
     </title>
     <link rel="stylesheet" href="./style.css">
+    <style>
+        body{
+
+        }
+
+
+
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>新規店舗登録</h1>
-        <div class="second-container">
-            <span>店舗名</span>
-            <input type="text" id="store-name" name="store-name" autocomplete="organization">
-        </div>
-
-        
-        <div class="second-container">
-            <span>ジャンル</span>
-            <div id="jenre-item" class="genre-list">
-                <label class="checkbox-option">
-                    <input type="checkbox" name="jenre-item" value="1">
-                    <span>和食</span>
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="jenre-item" value="2">
-                    <span>洋食</span>
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="jenre-item" value="3">
-                    <span>中華</span>
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="jenre-item" value="4">
-                    <span>カフェ</span>
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="jenre-item" value="5">
-                    <span>ラーメン</span>
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="jenre-item" value="6">
-                    <span>イタリアン</span>
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="jenre-item" value="7">
-                    <span>その他</span>
-                </label>
+    <div class="container" id="form-view">
+        <form id="store">
+            <h2>新規店舗登録</h2>
+            <div class="second-container">
+                <span>店舗名：</span>
+                <input type="text" id="store-name" name="store-name" autocomplete="organization">
+                <div id="nameError" class="error-message"></div>
             </div>
-        </div>
 
-        <div class="second-container">
-            <span>価格帯</span>
-            <div>
-                <p>
-                    <span id="price-min-label">下限なし</span>
-                    <span>〜</span>
-                    <span id="price-max-label">上限なし</span>
-                </p>
-                <div class="range-slider__wrapper">
-                    <div class="range-slider__track">
-                        <div class="range-slider__fill" id="price-range-fill"></div>
+            <div class="second-container">
+                <span>住所</span>
+                <div>
+                    <input type="text" id="searchBox" placeholder="例:1638001(ﾊｲﾌﾝなし)" onkeyup="inputCheck ()">
+                    <button type="button" id="search-btn" onclick="searchAddress ()">住所検索</button>
+                </div>
+                <div id="check"></div>
+                <p>都道府県：<input type="text" id="address-prefecture" name="address-prefecture"></p>
+                <p>市区町村：<input type="text" id="address-city" name="address-city"></p>
+                <p>番地：<input type="text" id="address-street" name="address-street"></p>
+                <div id="addressError" class="error-message"></div>
+            </div>
+
+            <div class="second-container">
+                <span>ジャンル</span>
+                <div id="jenre-item" class="genre-list">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="jenre-item" value="1">
+                        <span>和食</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="jenre-item" value="2">
+                        <span>洋食</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="jenre-item" value="3">
+                        <span>中華</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="jenre-item" value="4">
+                        <span>カフェ</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="jenre-item" value="5">
+                        <span>ラーメン</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="jenre-item" value="6">
+                        <span>イタリアン</span>
+                    </label>
+                    <!--
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="jenre-item" value="7">
+                        <span>その他</span>
+                    </label>
+                    -->
+                </div>
+                <div id="checkboxError" class="error-message"></div>
+            </div>
+
+            <div class="second-container">
+                <span>価格帯</span>
+                <div>
+                    <p>
+                        <span id="price-min-label"></span>
+                        <span>〜</span>
+                        <span id="price-max-label"></span>
+                    </p>
+                    <div class="range-slider__wrapper">
+                        <div class="range-slider__track">
+                            <div class="range-slider__fill" id="price-range-fill"></div>
+                        </div>
+                        <input type="range" id="price-min" class="range-slider__input range-slider__input--min" min="0"
+                            max="6" step="1" value="0" aria-label="価格の下限">
+                        <input type="range" id="price-max" class="range-slider__input range-slider__input--max" min="0"
+                            max="6" step="1" value="6" aria-label="価格の上限">
                     </div>
-                    <input
-                        type="range"
-                        id="price-min"
-                        class="range-slider__input range-slider__input--min"
-                        min="0"
-                        max="6"
-                        step="1"
-                        value="0"
-                        aria-label="価格の下限"
-                    >
-                    <input
-                        type="range"
-                        id="price-max"
-                        class="range-slider__input range-slider__input--max"
-                        min="0"
-                        max="6"
-                        step="1"
-                        value="6"
-                        aria-label="価格の上限"
-                    >
                 </div>
             </div>
-        </div>
-    
-
+            <button type="submit" id="submit-btn" >登　録</button>
+        </form>
     </div>
+
+    <!-- 登録店舗表示　-->
+    <div id="outputArea" class="container confirm-view" hidden>
+        <h2>登録されました</h2>
+        <p id="displayName"></p>
+        <p id="displayAddress"></p>
+        <p id="displayJenre"></p>
+        <p id="displayPrice"></p>
+        <button type="button" id="back-btn">店舗を登録する</button>
+    </div>
+
     <script src="./main.js"></script>
 </body>
 

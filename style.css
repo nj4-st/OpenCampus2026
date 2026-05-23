@@ -1,82 +1,86 @@
 body {
-    margin: 0;
-    color: #5e411c;
+  margin: 0;
+  background-color: #ffcc8a;
+  color: #5e411c;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    margin:  10px clamp(20px,20vw,300px);
-
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px clamp(20px, 20vw, 300px);
+  padding: 0px 50px 20px 50px;
+  border-radius: 15px;
 }
 
-.second-container{
-    margin-bottom: 10px;
+.second-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 
 input[type="text"] {
-    width: 100%;
-    padding: 0.55rem 0.65rem;
-    border: 1px solid #c5ccd3;
-    border-radius: 4px;
-    font-size: 1rem;
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #c5ccd3;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
 input[type="text"]:focus {
-    outline: 2px solid #3b82f6;
-    outline-offset: 1px;
-    border-color: #3b82f6;
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+  border-color: #3b82f6;
 }
 
 
 .genre-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .checkbox-option {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.45rem 0.75rem;
-    border: 1px solid #c5ccd3;
-    border-radius: 4px;
-    cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #c5ccd3;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .checkbox-option:has(input:checked) {
-    border-color: #5e411c;
-    background-color: #faf6f0;
+  border-color: #5e411c;
+  background-color: #faf6f0;
 }
 
 .checkbox-option input[type="checkbox"] {
-    margin: 0;
-    accent-color: #5e411c;
+  margin: 0;
+  accent-color: #5e411c;
 }
 
 /* レンジスライダー */
 
 .range-slider__wrapper {
   position: relative;
-  height: 40px;
-  margin: 0 8px;
+  max-width: 300px;
 }
 
 
 .range-slider__track {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 6px;
-    transform: translateY(-50%);
-    background: #e8e0d6;
-    border-radius: 3px;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 6px;
+  transform: translateY(-50%);
+  background: #b8b2aa;
+  border-radius: 3px;
+  pointer-events: none;
 }
 
 .range-slider__fill {
@@ -85,94 +89,145 @@ input[type="text"]:focus {
   bottom: 0;
   left: var(--fill-left, 0%);
   right: var(--fill-right, 0%);
-  background: #5e411c;
+  background: #fba22e;
   border-radius: 3px;
 }
 
 .range-slider__input {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    transform: translateY(-50%);
-    background: none;
-    pointer-events: none;
-    -webkit-appearance: none;
-    appearance: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .range-slider__input::-webkit-slider-runnable-track {
-    height: 6px;
-    background: transparent;
-    border: none;
+  height: 6px;
+  background: transparent;
+  border: none;
 }
 
 .range-slider__input::-moz-range-track {
-    height: 6px;
-    background: transparent;
-    border: none;
+  height: 6px;
+  background: transparent;
+  border: none;
 }
 
 .range-slider__input::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    margin-top: -7px;
-    border: 2px solid #5e411c;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 15px;
+  border-radius: 20%;
+  border: 1px solid;
+  color: #b3782c;
+  margin-top: -5px;
+  background: #ffaf40;
+  box-shadow: 3px 1px 0px rgb(0, 0, 0, 0.2);
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .range-slider__input::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #5e411c;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    pointer-events: auto;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #5e411c;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .range-slider__input--min {
-    z-index: 3;
+  z-index: 3;
 }
 
 .range-slider__input--max {
-    z-index: 4;
+  z-index: 4;
 }
 
 .range-slider__input--min.is-on-top {
-    z-index: 5;
+  z-index: 5;
 }
 
 .range-slider__scale {
-    margin-top: 0.5rem;
-    font-size: 0.65rem;
-    color: #8a7355;
+  margin-top: 0.5rem;
+  font-size: 0.65rem;
+  color: #8a7355;
 }
 
 .range-slider__scale-row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.2rem;
 }
 
 .range-slider__scale-row--max {
-    color: #a08b6e;
+  color: #a08b6e;
 }
 
 .range-slider__scale-row span {
-    flex: 1;
-    text-align: center;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+
+
+#search-btn{
+  margin-top: 10px;
+  border-radius: 10px;
+  height: 20px;
+  border: none;
+  background-color: #dfdfdf;
+  width: min(50%,130px) ;
+}
+
+
+.confirm-view[hidden],
+#outputArea[hidden] {
+  display: none;
+}
+
+#form-view[hidden] {
+  display: none;
+}
+
+#outputArea p {
+  margin: 0.5rem 0;
+}
+
+#back-btn,
+#submit-btn {
+  background-color: #ffaf40;
+  color: #332a2a;
+  border-radius: 10px;
+  border: none;
+  width: 80%;
+  margin: 10%;
+  height: 30px;
+  font-size: large;
+  justify-content: center;
+  transition: background-color 0.5s;
+}
+
+#back-btn:hover,
+#submit-btn:hover {
+  background-color: rgb(197, 177, 150);
+  color: #3a3636;
+  
+}
+
+.error-message{
+  color: red;
+}
