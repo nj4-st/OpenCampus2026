@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-color: #ffcc8a;
   color: #5e411c;
+  background-repeat: repeat;
 }
 
 .container {
@@ -12,6 +12,7 @@ body {
   margin: 20px clamp(20px, 20vw, 300px);
   padding: 0px 50px 20px 50px;
   border-radius: 15px;
+  
 }
 
 .second-container {
@@ -28,6 +29,7 @@ input[type="text"] {
   border: 1px solid #c5ccd3;
   border-radius: 4px;
   font-size: 1rem;
+  margin-top: 10px;
 }
 
 input[type="text"]:focus {
@@ -207,6 +209,17 @@ input[type="text"]:focus {
   margin: 0.5rem 0;
 }
 
+#outputArea{
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  margin: 40px clamp(20px, 20vw, 300px);
+  padding: 0px 50px 20px 50px;
+  border-radius: 15px;
+}
+
 #back-btn,
 #submit-btn {
   background-color: #ffaf40;
@@ -221,13 +234,25 @@ input[type="text"]:focus {
   transition: background-color 0.5s;
 }
 
+
 #back-btn:hover,
 #submit-btn:hover {
   background-color: rgb(197, 177, 150);
   color: #3a3636;
   
 }
+  
 
 .error-message{
-  color: red;
+  color: rgb(240, 66, 66);
+}
+
+.required{
+  background-color: rgb(240, 66, 66);
+  margin-inline: 3px;
+  border-radius: 10px;
+  font-size: small;
+  padding-inline: 5px;
+  border: none;
+  color: white;
 }

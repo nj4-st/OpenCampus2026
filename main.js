@@ -111,9 +111,6 @@ function inputCheck() {
     }
 }
 
-function check() {
-
-}
 
 
 // フォーム送信
@@ -148,7 +145,7 @@ document.getElementById("store").addEventListener("submit", function (e) {
     const addressStreetValue = addressStreetInput.value.trim();
 
     if (nameValue === '') {
-        nameError.textContent = '※必須入力です。';
+        nameError.textContent = '※店舗名を登録してください。';
         hasError = true;
     } else if (nameValue.length > 20) {
         nameError.textContent = `※20文字以下で入力してください。`;
@@ -157,7 +154,7 @@ document.getElementById("store").addEventListener("submit", function (e) {
 
 
     if (prefectureValue === '' || cityValue === '' || addressStreetValue === '') {
-        addressError.textContent = '※必須入力です。';
+        addressError.textContent = '※都道府県、市区町村、番地を入力してください。';
         hasError = true;
     } else if (prefectureValue.length > 20 || cityValue.length > 20 || addressStreetValue.length > 20) {
         addressError.textContent = `※20文字以下で入力してください。`;
@@ -189,7 +186,7 @@ document.getElementById("store").addEventListener("submit", function (e) {
     const inputPriceMax = document.getElementById("price-max-label").textContent;
 
     const genreText = [...inputJenre]
-        .map((el) => el.parentElement.querySelector("span").textContent)
+        .map((el) => el.value)
         .join("、");
 
     displayName.textContent = `店舗名: ${inputName}`;
