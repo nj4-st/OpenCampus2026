@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="./style.css">
     <style>
         body{
-            background-color: #eed4a4;/*背景色を変えてみよう*/
+            background-color: #fde492;/*背景色を変えてみよう*/
             
-            /*この下から背景のデザインを記述*/
+            /*演習２－２  この下から背景のデザインを記述*/
+            
+
             
             
         }
@@ -23,42 +25,44 @@
 <body>
     <div class="container" id="form-view">
         <form id="store">
-            <h2>新規店舗登録</h2>
+            <h2 style="text-align: center;">新規店舗登録</h2>
             <div class="second-container">
                 <span>店舗名<span class="required">必須</span>：</span>
-                <input type="text" id="store-name" name="store-name" autocomplete="organization">
                 <div id="nameError" class="error-message"></div>
+                <input type="text" id="store-name" name="store-name" autocomplete="organization">
             </div>
 
             <div class="second-container">
-                <span>住所<span class="required">必須</span>：</span><br>
-                <div>
-                    <input type="text" id="searchBox" placeholder="例:8130004(ﾊｲﾌﾝなし)" onkeyup="inputCheck ()">
-                    <button type="button" id="search-btn" onclick="searchAddress ()">住所検索</button>
+                <p>郵便番号</p>
+                <div style="display: flex; flex-direction: row;">
+                    <input type="text" id="searchBox" placeholder="数字のみで入力してください。" onkeyup="inputCheck ()">
+                    <button type="button" id="search-btn" onclick="searchAddress ()">検索</button>
                 </div>
                 <div id="check"></div>
-                <p>都道府県<input type="text" id="address-prefecture" name="address-prefecture"></p>
-                <p>市区町村<input type="text" id="address-city" name="address-city"></p>
-                <p>番地<input type="text" id="address-street" name="address-street"></p>
                 <div id="addressError" class="error-message"></div>
+                <p>都道府県<span class="required">必須</span><input type="text" id="address-prefecture" name="address-prefecture"></p>
+                <p>市区町村<span class="required">必須</span><input type="text" id="address-city" name="address-city"></p>
+                <p>番地<span class="required">必須</span><input type="text" id="address-street" name="address-street"></p>
             </div>
 
             <div class="second-container">
                 <span>ジャンル<span class="required">必須</span>：</span>
-                <span style="color: rgb(240, 66, 66); font-size:small;margin-bottom: 10px;">一つ以上選択してください</span>
+                <span style="color: rgb(195, 119, 119); font-size:small;margin-bottom: 10px;">一つ以上選択してください</span>
+                <div id="checkboxError" class="error-message"></div>
+
                 <div id="jenre-item" class="genre-list">
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="和食"> 和食</label>
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="洋食"> 洋食</label>
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="中華"> 中華</label>
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="カフェ"> カフェ</label>
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="イタリアン"> イタリアン</label>
-                    <!--ジャンルを追加-->
+                    <!--演習2-1 ジャンルを追加-->
 
+                    
 
 
 
                 </div>
-                <div id="checkboxError" class="error-message"></div>
             </div>
 
             <div class="second-container">
@@ -80,14 +84,14 @@
                     </div>
                 </div>
             </div>
-
             <button type="submit" id="submit-btn" >登　録</button>
         </form>
     </div>
 
-    <!-- 登録店舗表示　-->
+    <!-- 登録店舗表示-->
     <div id="outputArea" class=" confirm-view" hidden>
         <h2>登録されました</h2>
+        <div id="displayPhoto"></div>
         <p id="displayName"></p>
         <p id="displayAddress"></p>
         <p id="displayJenre"></p>

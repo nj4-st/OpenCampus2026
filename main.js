@@ -1,5 +1,5 @@
 //レンジスライダー
-const MIN_LABELS = ["下限なし", "501", "1001", "2001", "3001", "4001", "5001"];
+const MIN_LABELS = ["0", "501", "1001", "2001", "3001", "4001", "5001"];
 const MAX_LABELS = ["0", "500", "1000", "2000", "3000", "4000", "上限なし"];
 
 const STEP_COUNT = MIN_LABELS.length - 1;
@@ -26,12 +26,9 @@ function updateFill(minIndex, maxIndex) {
 
 //画面上ラベルの更新
 function updateLabels(minIndex, maxIndex) {
-    if (minIndex == 0) {
-        minLabel.textContent = MIN_LABELS[minIndex];
-    } else {
-        minLabel.textContent = MIN_LABELS[minIndex] + "円";
-    }
-
+    
+    minLabel.textContent = MIN_LABELS[minIndex] + "円";
+    
     if (maxIndex == 6) {
         maxLabel.textContent = MAX_LABELS[maxIndex];
     } else {
@@ -79,10 +76,17 @@ function syncFromMax() {
     updateFill(minIndex, maxIndex);
 }
 
+function resetPriceSlider() {
+    minInput.value = "0";
+    maxInput.value = "6";
+    updateLabels(0, STEP_COUNT);
+    updateFill(0, STEP_COUNT);
+}
+
 if (minInput && maxInput) {
     minInput.addEventListener("input", syncFromMin);
     maxInput.addEventListener("input", syncFromMax);
-    syncFromMin();
+    resetPriceSlider();
 }
 
 
@@ -93,7 +97,7 @@ async function searchAddress() {
     const response = await fetch(url);
     const data = await response.json();
     if (!(data['results'])) {
-        document.getElementById("check").innerHTML = '該当データなし';
+        document.getElementById("check").innerHTML = '該当データがありません';
     } else {
         const result = data['results'][0];
         document.getElementById("address-prefecture").value = result['address1'];
@@ -145,7 +149,7 @@ document.getElementById("store").addEventListener("submit", function (e) {
     const addressStreetValue = addressStreetInput.value.trim();
 
     if (nameValue === '') {
-        nameError.textContent = '※店舗名を登録してください。';
+        nameError.textContent = '※店舗名を入力してください。';
         hasError = true;
     } else if (nameValue.length > 20) {
         nameError.textContent = `※20文字以下で入力してください。`;
@@ -203,4 +207,5 @@ document.getElementById("back-btn").addEventListener("click", function () {
     outputArea.hidden = true;
     formView.hidden = false;
     document.getElementById("store").reset();
+    resetPriceSlider();
 });

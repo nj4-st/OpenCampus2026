@@ -189,7 +189,7 @@ input[type="text"]:focus {
 #search-btn{
   margin-top: 10px;
   border-radius: 10px;
-  height: 20px;
+  margin-left: 2px;
   border: none;
   background-color: #dfdfdf;
   width: min(50%,130px) ;
@@ -237,9 +237,8 @@ input[type="text"]:focus {
 
 #back-btn:hover,
 #submit-btn:hover {
-  background-color: rgb(197, 177, 150);
-  color: #3a3636;
-  
+  background-color: rgb(228, 203, 158);
+  color: #5c4a11;
 }
   
 
