@@ -255,3 +255,14 @@ input[type="text"]:focus {
   border: none;
   color: white;
 }
+
+.photo-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.photo{
+  height: 100px;
+  width: 100px;
+}

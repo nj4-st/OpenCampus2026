@@ -84,6 +84,40 @@
                     </div>
                 </div>
             </div>
+        
+            <div class="second-container">
+                <div class="photo-container">
+
+                    <div>
+                    <input id="image_washoku" type="radio" value="washoku.png" name="image" checked>
+                    <label for="image_washoku"><img src="./img/washoku.png" class="photo"></label>
+                    </div>
+
+                    <div>
+                    <input id="image_youshoku" type="radio" value="youshoku.png" name="image">
+                    <label for="image_youshoku"><img src="./img/youshoku.png" class="photo"></label>
+                    </div>
+
+                    <div>
+                    <input id="image_chuka" type="radio" value="chuka.png" name="image">
+                    <label for="image_chuka"><img src="./img/chuka.png" class="photo"></label>
+                    </div>
+
+                    <div>
+                    <input id="image_cafe" type="radio" value="cafe.png" name="image">
+                    <label for="image_cafe"><img src="./img/cafe.png" class="photo"></label>
+                    </div>
+
+                    <div>
+                    <input id="image_italian" type="radio" value="italian.png" name="image">
+                    <label for="image_italian"><img src="./img/italian.png" class="photo"></label>
+                    </div>
+
+                    
+                </div>
+                  
+            </div>
+            
             <button type="submit" id="submit-btn" >登　録</button>
         </form>
     </div>
@@ -91,7 +125,7 @@
     <!-- 登録店舗表示-->
     <div id="outputArea" class=" confirm-view" hidden>
         <h2>登録されました</h2>
-        <div id="displayPhoto"></div>
+        <img id="displayPhoto" src="" style="width: 100px;">
         <p id="displayName"></p>
         <p id="displayAddress"></p>
         <p id="displayJenre"></p>

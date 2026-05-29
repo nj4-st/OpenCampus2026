@@ -124,6 +124,7 @@ const displayName = document.getElementById("displayName");
 const displayAddress = document.getElementById("displayAddress");
 const displayJenre = document.getElementById("displayJenre");
 const displayPrice = document.getElementById("displayPrice");
+const displayPhoto = document.getElementById("displayPhoto");
 
 document.getElementById("store").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -193,6 +194,10 @@ document.getElementById("store").addEventListener("submit", function (e) {
         .map((el) => el.value)
         .join("、");
 
+    const inputPhoto = document.querySelector('input[name="image"]:checked');
+    
+    displayPhoto.src = './img/' + inputPhoto.value;
+    displayPhoto.style.display = `${inputPhoto}`;
     displayName.textContent = `店舗名: ${inputName}`;
     displayAddress.textContent = `住所: ${inputPrefecture}${inputCity} ${inputStreet}`;
     displayJenre.textContent = `ジャンル: ${genreText || "（未選択）"}`;
