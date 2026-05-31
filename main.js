@@ -120,11 +120,69 @@ function inputCheck() {
 // フォーム送信
 const formView = document.getElementById("form-view");
 const outputArea = document.getElementById("outputArea");
+/*
 const displayName = document.getElementById("displayName");
 const displayAddress = document.getElementById("displayAddress");
 const displayJenre = document.getElementById("displayJenre");
 const displayPrice = document.getElementById("displayPrice");
 const displayPhoto = document.getElementById("displayPhoto");
+*/
+
+const STORAGE_KEY = "registeredStores";
+
+function loadStores() {
+    const json = localStorage.getItem(STORAGE_KEY);
+    return json ? JSON.parse(json) : [];
+}
+ 
+/** 店舗データを localStorage に追記保存する */
+function saveStore(store) {
+    const stores = loadStores();
+    stores.push(store);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stores));
+}
+ 
+/** 一覧画面に店舗カードを描画する */
+function renderStoreList() {
+    const stores = loadStores();
+    const storeList = document.getElementById("storeList");
+    storeList.innerHTML = "";
+ 
+    if (stores.length === 0) {
+        storeList.innerHTML = "<p style='text-align:center;'>登録された店舗はありません。</p>";
+        return;
+    }
+ 
+    stores.forEach(function (store, index) {
+        const card = document.createElement("div");
+        card.className = "store-card";
+        card.innerHTML = `
+            <div id="card-container">
+                <img src="./img/${store.photo}" id="card-img">
+                <div id="card-second-container">
+                    <h3>${store.name}</h3>
+                    <p>📍${store.address}</p>
+                    <p>🪙${store.priceMin} 〜 ${store.priceMax}</p>
+                    <p>🍴${store.genre}</p>
+                </div>
+                <button type="button" class="delete-btn" data-index="${index}">×</button>
+
+            <div>
+        `;
+        storeList.appendChild(card);
+    });
+ 
+    // 削除ボタンのイベント登録
+    document.querySelectorAll(".delete-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            const i = Number(this.dataset.index);
+            const stores = loadStores();
+            stores.splice(i, 1);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(stores));
+            renderStoreList();
+        });
+    });
+}
 
 document.getElementById("store").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -196,14 +254,27 @@ document.getElementById("store").addEventListener("submit", function (e) {
 
     const inputPhoto = document.querySelector('input[name="image"]:checked');
     
+
+    const storeData = {
+        name: inputName,
+        address: `${inputPrefecture}${inputCity} ${inputStreet}`,
+        genre: genreText || "（未選択）",
+        priceMin: inputPriceMin,
+        priceMax: inputPriceMax,
+        photo: inputPhoto.value,
+    };
+    saveStore(storeData);
+
+    /*
+
     displayPhoto.src = './img/' + inputPhoto.value;
     displayPhoto.style.display = `${inputPhoto}`;
     displayName.textContent = `店舗名: ${inputName}`;
     displayAddress.textContent = `住所: ${inputPrefecture}${inputCity} ${inputStreet}`;
     displayJenre.textContent = `ジャンル: ${genreText || "（未選択）"}`;
     displayPrice.textContent = `価格帯: ${inputPriceMin} 〜 ${inputPriceMax}`;
-
-
+*/
+    renderStoreList();
     formView.hidden = true;
     outputArea.hidden = false;
 });

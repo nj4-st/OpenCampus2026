@@ -25,7 +25,8 @@
 <body>
     <div class="container" id="form-view">
         <form id="store">
-            <h2 style="text-align: center;">新規店舗登録</h2>
+            <h2 >店舗を登録する</h2><hr>
+            <span style="margin: 10px;"></span>
             <div class="second-container">
                 <span>店舗名<span class="required">必須</span>：</span>
                 <div id="nameError" class="error-message"></div>
@@ -33,16 +34,16 @@
             </div>
 
             <div class="second-container">
-                <p>郵便番号</p>
+                <p style="margin-bottom: 0;">郵便番号</p>
                 <div style="display: flex; flex-direction: row;">
                     <input type="text" id="searchBox" placeholder="数字のみで入力してください。" onkeyup="inputCheck ()">
                     <button type="button" id="search-btn" onclick="searchAddress ()">検索</button>
                 </div>
                 <div id="check"></div>
                 <div id="addressError" class="error-message"></div>
-                <p>都道府県<span class="required">必須</span><input type="text" id="address-prefecture" name="address-prefecture"></p>
-                <p>市区町村<span class="required">必須</span><input type="text" id="address-city" name="address-city"></p>
-                <p>番地<span class="required">必須</span><input type="text" id="address-street" name="address-street"></p>
+                <p>都道府県：<span class="required">必須</span><input type="text" id="address-prefecture" name="address-prefecture"></p>
+                <p>市区町村：<span class="required">必須</span><input type="text" id="address-city" name="address-city"></p>
+                <p>番地：<span class="required">必須</span><input type="text" id="address-street" name="address-street"></p>
             </div>
 
             <div class="second-container">
@@ -68,10 +69,10 @@
             <div class="second-container">
                 <span>価格帯：</span>
                 <div>
-                    <p>
-                        <span id="price-min-label"></span>
-                        <span>〜</span>
-                        <span id="price-max-label"></span>
+                    <p id="range-label">
+                        <span id="price-min-label" class="range-back-label"></span>
+                        <span style="margin-top: 10px;">〜</span>
+                        <span id="price-max-label" class="range-back-label"></span>
                     </p>
                     <div class="range-slider__wrapper">
                         <div class="range-slider__track">
@@ -86,29 +87,29 @@
             </div>
         
             <div class="second-container">
+                <span style="margin-bottom: 20px;">写真：</span>
                 <div class="photo-container">
-
-                    <div>
+                    <div class="photo-radio">
                     <input id="image_washoku" type="radio" value="washoku.png" name="image" checked>
                     <label for="image_washoku"><img src="./img/washoku.png" class="photo"></label>
                     </div>
 
-                    <div>
+                    <div class="photo-radio">
                     <input id="image_youshoku" type="radio" value="youshoku.png" name="image">
                     <label for="image_youshoku"><img src="./img/youshoku.png" class="photo"></label>
                     </div>
 
-                    <div>
+                    <div class="photo-radio">
                     <input id="image_chuka" type="radio" value="chuka.png" name="image">
                     <label for="image_chuka"><img src="./img/chuka.png" class="photo"></label>
                     </div>
 
-                    <div>
+                    <div class="photo-radio">
                     <input id="image_cafe" type="radio" value="cafe.png" name="image">
                     <label for="image_cafe"><img src="./img/cafe.png" class="photo"></label>
                     </div>
 
-                    <div>
+                    <div class="photo-radio">
                     <input id="image_italian" type="radio" value="italian.png" name="image">
                     <label for="image_italian"><img src="./img/italian.png" class="photo"></label>
                     </div>
@@ -123,13 +124,16 @@
     </div>
 
     <!-- 登録店舗表示-->
-    <div id="outputArea" class=" confirm-view" hidden>
-        <h2>登録されました</h2>
+    <div id="outputArea" class="confirm-view" hidden>
+        <h2>登録店舗一覧</h2>
+        <!--
         <img id="displayPhoto" src="" style="width: 100px;">
         <p id="displayName"></p>
         <p id="displayAddress"></p>
         <p id="displayJenre"></p>
         <p id="displayPrice"></p>
+        -->
+        <div id="storeList"></div>
         <button type="button" id="back-btn">新しく店舗を登録する</button>
     </div>
 

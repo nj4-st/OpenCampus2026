@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  color: #5e411c;
+  color: #55360d;
   background-repeat: repeat;
 }
 
@@ -51,7 +51,7 @@ input[type="text"]:focus {
   gap: 0.4rem;
   padding: 0.45rem 0.75rem;
   border: 1px solid #c5ccd3;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -67,9 +67,24 @@ input[type="text"]:focus {
 
 /* レンジスライダー */
 
+#range-label{
+  margin-left: 30px;
+  display:flex; 
+  flex-direction:  row; 
+  justify-content: space-around;
+  max-width: 400px;
+}
+
+.range-back-label{
+  background-color: rgb(236, 229, 220); 
+  padding: 10px; 
+  border-radius: 10px;
+}
+
 .range-slider__wrapper {
   position: relative;
-  max-width: 300px;
+  max-width: 400px;
+  margin-left: 30px;
 }
 
 
@@ -191,8 +206,13 @@ input[type="text"]:focus {
   border-radius: 10px;
   margin-left: 2px;
   border: none;
-  background-color: #dfdfdf;
+  background-color: #ffd883;
   width: min(50%,130px) ;
+}
+
+#search-btn:hover{
+  background-color: #a88944;
+  color: white;
 }
 
 
@@ -205,9 +225,6 @@ input[type="text"]:focus {
   display: none;
 }
 
-#outputArea p {
-  margin: 0.5rem 0;
-}
 
 #outputArea{
   background-color: #ffffff;
@@ -215,9 +232,53 @@ input[type="text"]:focus {
   flex-direction: column;
   height: 100%;
   align-items: center;
-  margin: 40px clamp(20px, 20vw, 300px);
-  padding: 0px 50px 20px 50px;
+  margin: 40px clamp(20px, 10%, 300px);
   border-radius: 15px;
+  width: 80%;
+  padding: 0;
+}
+
+
+#card-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-inline: 10%;
+  background-color: #ebe5db;
+  margin-bottom: 20px;
+  border-radius: 15px;
+ 
+}
+
+#card-img{
+  width: 40%;
+  /*object-fit: cover;*/
+  border-radius: 15px;
+}
+
+#card-second-container{
+  width: 55%;
+  display: flex;
+  margin-left: 10px;
+  flex-direction: column;
+}
+
+#card-second-container p {
+  font-size: small;
+  margin: 0;
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: end;
+  width: 5%;
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 50%; 
+  font-size: large;
+  border: none;
 }
 
 #back-btn,
@@ -260,9 +321,23 @@ input[type="text"]:focus {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding: 15px;
+  border-radius: 15px;
+  /*border:solid 0.5px #b3a5a5;*/
+  background-color: #f3f3f3;
+  accent-color: rgb(199, 130, 39);
 }
+
+.photo-radio{
+  display: flex; 
+  align-items: center;
+  color: #b3782c;
+}
+
 
 .photo{
   height: 100px;
   width: 100px;
+  object-fit: cover;
 }
+
