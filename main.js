@@ -1,4 +1,4 @@
-//レンジスライダー
+//レンジスライダー表示用
 const MIN_LABELS = ["0", "501", "1001", "2001", "3001", "4001", "5001"];
 const MAX_LABELS = ["0", "500", "1000", "2000", "3000", "4000", "上限なし"];
 
@@ -10,8 +10,7 @@ const minLabel = document.getElementById("price-min-label");
 const maxLabel = document.getElementById("price-max-label");
 const fillEl = document.getElementById("price-range-fill");
 
-
-//％変換
+//インデックスを％に変換
 function indexToPercent(index) {
     return (index / STEP_COUNT) * 100;
 }
@@ -20,13 +19,13 @@ function indexToPercent(index) {
 function updateFill(minIndex, maxIndex) {
     const left = indexToPercent(minIndex);
     const right = 100 - indexToPercent(maxIndex);
+    //CSS変数を使用して左右の余白を更新
     fillEl.style.setProperty("--fill-left", `${left}%`);
     fillEl.style.setProperty("--fill-right", `${right}%`);
 }
 
 //画面上ラベルの更新
 function updateLabels(minIndex, maxIndex) {
-    
     minLabel.textContent = MIN_LABELS[minIndex] + "円";
     
     if (maxIndex == 6) {
@@ -34,10 +33,7 @@ function updateLabels(minIndex, maxIndex) {
     } else {
         maxLabel.textContent = MAX_LABELS[maxIndex] + "円";
     }
-
-
 }
-
 
 //minを動かした場合の処理
 function syncFromMin() {
@@ -76,6 +72,7 @@ function syncFromMax() {
     updateFill(minIndex, maxIndex);
 }
 
+//レンジスライダーをリセット
 function resetPriceSlider() {
     minInput.value = "0";
     maxInput.value = "6";
@@ -83,6 +80,7 @@ function resetPriceSlider() {
     updateFill(0, STEP_COUNT);
 }
 
+//イベントリスナーを登録
 if (minInput && maxInput) {
     minInput.addEventListener("input", syncFromMin);
     maxInput.addEventListener("input", syncFromMax);
@@ -106,6 +104,7 @@ async function searchAddress() {
     }
 }
 
+//郵便番号入力チェック
 function inputCheck() {
     const inputValue = document.getElementById("searchBox").value;
     if (!(inputValue.match(/^[0-9]+$/)) || !(inputValue.length === 7)) {
@@ -116,33 +115,26 @@ function inputCheck() {
 }
 
 
-
 // フォーム送信
 const formView = document.getElementById("form-view");
 const outputArea = document.getElementById("outputArea");
-/*
-const displayName = document.getElementById("displayName");
-const displayAddress = document.getElementById("displayAddress");
-const displayJenre = document.getElementById("displayJenre");
-const displayPrice = document.getElementById("displayPrice");
-const displayPhoto = document.getElementById("displayPhoto");
-*/
-
 const STORAGE_KEY = "registeredStores";
 
+//店舗データを localStorage から読み込む
 function loadStores() {
     const json = localStorage.getItem(STORAGE_KEY);
+    //jsonが存在する場合はobjectに変換して返す
     return json ? JSON.parse(json) : [];
 }
  
-/** 店舗データを localStorage に追記保存する */
+//店舗データを localStorage に追記保存する
 function saveStore(store) {
     const stores = loadStores();
     stores.push(store);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(stores));
 }
  
-/** 一覧画面に店舗カードを描画する */
+//一覧画面に店舗カードを描画する 
 function renderStoreList() {
     const stores = loadStores();
     const storeList = document.getElementById("storeList");
@@ -166,8 +158,7 @@ function renderStoreList() {
                     <p>🍴${store.genre}</p>
                 </div>
                 <button type="button" class="delete-btn" data-index="${index}">×</button>
-
-            <div>
+            </div>
         `;
         storeList.appendChild(card);
     });
@@ -177,6 +168,7 @@ function renderStoreList() {
         btn.addEventListener("click", function () {
             const i = Number(this.dataset.index);
             const stores = loadStores();
+            //splice(開始位置, 削除する件数)
             stores.splice(i, 1);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(stores));
             renderStoreList();
@@ -184,7 +176,9 @@ function renderStoreList() {
     });
 }
 
+//フォーム送信時の処理
 document.getElementById("store").addEventListener("submit", function (e) {
+    //デフォルトの動作を中断
     e.preventDefault();
 
     const nameError = document.getElementById('nameError');
@@ -194,12 +188,15 @@ document.getElementById("store").addEventListener("submit", function (e) {
     nameError.textContent = '';
     checkboxError.textContent = '';
 
-    // エラーがあるかどうかを記録するフラグ
+    // エラーの有無を記録
     let hasError = false;
 
-    // テキストのバリデーション 
+
+    // テキストのバリデーション
+    
     const userNameInput = document.getElementById('store-name');
-    const nameValue = userNameInput.value.trim(); // 前後の余計な空白を削除
+    // 前後の余計な空白を削除
+    const nameValue = userNameInput.value.trim(); 
     const prefectureInput = document.getElementById('address-prefecture');
     const cityInput = document.getElementById('address-city');
     const addressStreetInput = document.getElementById('address-street');
@@ -225,16 +222,14 @@ document.getElementById("store").addEventListener("submit", function (e) {
     }
 
 
-   
-
-    const checkedBoxes = document.querySelectorAll('input[name="jenre-item"]:checked');
+       const checkedBoxes = document.querySelectorAll('input[name="jenre-item"]:checked');
 
     if (checkedBoxes.length === 0) {
         checkboxError.textContent = '※最低でも1つ以上チェックを入れてください。';
         hasError = true;
     }
 
-    // 判定 
+    // エラーがある場合は処理を中断
     if (hasError) {
         return;
     }
@@ -248,6 +243,7 @@ document.getElementById("store").addEventListener("submit", function (e) {
     const inputPriceMin = document.getElementById("price-min-label").textContent;
     const inputPriceMax = document.getElementById("price-max-label").textContent;
 
+    //ジャンルを配列に変換して結合し、文字列に変換
     const genreText = [...inputJenre]
         .map((el) => el.value)
         .join("、");
@@ -265,15 +261,6 @@ document.getElementById("store").addEventListener("submit", function (e) {
     };
     saveStore(storeData);
 
-    /*
-
-    displayPhoto.src = './img/' + inputPhoto.value;
-    displayPhoto.style.display = `${inputPhoto}`;
-    displayName.textContent = `店舗名: ${inputName}`;
-    displayAddress.textContent = `住所: ${inputPrefecture}${inputCity} ${inputStreet}`;
-    displayJenre.textContent = `ジャンル: ${genreText || "（未選択）"}`;
-    displayPrice.textContent = `価格帯: ${inputPriceMin} 〜 ${inputPriceMax}`;
-*/
     renderStoreList();
     formView.hidden = true;
     outputArea.hidden = false;

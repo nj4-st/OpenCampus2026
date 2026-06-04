@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>プチオープンキャンパス2026
+    <title>店舗登録メーカー2026
     </title>
     <link rel="stylesheet" href="./style.css">
     <style>
         body{
             background-color: #fde492;/*背景色を変えてみよう*/
             
-            /*演習２－２  この下から背景のデザインを記述*/
+            /*演習２－１  この下から背景のデザインを記述*/
             
 
             
@@ -37,7 +37,7 @@
                 <p style="margin-bottom: 0;">郵便番号</p>
                 <div style="display: flex; flex-direction: row;">
                     <input type="text" id="searchBox" placeholder="数字のみで入力してください。" onkeyup="inputCheck ()">
-                    <button type="button" id="search-btn" onclick="searchAddress ()">検索</button>
+                    <button type="button" id="search-btn" onclick="searchAddress ()">検　索</button>
                 </div>
                 <div id="check"></div>
                 <div id="addressError" class="error-message"></div>
@@ -57,11 +57,17 @@
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="中華"> 中華</label>
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="カフェ"> カフェ</label>
                     <label class="checkbox-option"><input type="checkbox" name="jenre-item" value="イタリアン"> イタリアン</label>
-                    <!--演習2-1 ジャンルを追加-->
+                    
+                    <!-----------------演習２－２ ジャンルを追加----------------->
+
+
+
+
+
 
                     
 
-
+                    <!--------------------------------------------------------->
 
                 </div>
             </div>
@@ -114,7 +120,16 @@
                     <label for="image_italian"><img src="./img/italian.png" class="photo"></label>
                     </div>
 
+                    <!--------------演習２－３ 写真を追加------------------>
+
+
+
+
+
+
                     
+
+                    <!--------------------------------------------------->
                 </div>
                   
             </div>
@@ -126,13 +141,6 @@
     <!-- 登録店舗表示-->
     <div id="outputArea" class="confirm-view" hidden>
         <h2>登録店舗一覧</h2>
-        <!--
-        <img id="displayPhoto" src="" style="width: 100px;">
-        <p id="displayName"></p>
-        <p id="displayAddress"></p>
-        <p id="displayJenre"></p>
-        <p id="displayPrice"></p>
-        -->
         <div id="storeList"></div>
         <button type="button" id="back-btn">新しく店舗を登録する</button>
     </div>

@@ -76,7 +76,6 @@ input[type="text"]:focus {
 }
 
 .range-back-label{
-  background-color: rgb(236, 229, 220); 
   padding: 10px; 
   border-radius: 10px;
 }
@@ -104,6 +103,7 @@ input[type="text"]:focus {
   position: absolute;
   top: 0;
   bottom: 0;
+  /*CSS変数を使用して左右の余白を更新*/
   left: var(--fill-left, 0%);
   right: var(--fill-right, 0%);
   background: #fba22e;
@@ -252,7 +252,8 @@ input[type="text"]:focus {
 
 #card-img{
   width: 40%;
-  /*object-fit: cover;*/
+  height: 200px;
+  object-fit: cover;
   border-radius: 15px;
 }
 
@@ -340,4 +341,3 @@ input[type="text"]:focus {
   width: 100px;
   object-fit: cover;
 }
-
